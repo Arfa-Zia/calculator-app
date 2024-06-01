@@ -1164,6 +1164,10 @@ button:hover {
     height: 30vw;
   }
 
+  .md\:h-auto {
+    height: auto;
+  }
+
   .md\:w-auto {
     width: auto;
   }

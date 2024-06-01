@@ -57,8 +57,8 @@ function Calculate(str){
                 alert('Division with 0 is not possible')
             }
             else{
-                result =  firstOperand / sencondOperand
-                result.toFixed(5)
+                result =  (firstOperand / sencondOperand).toFixed(5)
+
             }
             break;
     }
