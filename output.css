@@ -604,16 +604,104 @@ button:hover {
   left: 0.75rem;
 }
 
+.right-9 {
+  right: 2.25rem;
+}
+
+.right-\[43\%\] {
+  right: 43%;
+}
+
+.top-3 {
+  top: 0.75rem;
+}
+
+.top-\[2\%\] {
+  top: 2%;
+}
+
+.top-\[39\%\] {
+  top: 39%;
+}
+
+.top-\[\] {
+  top: ;
+}
+
+.right-\[\] {
+  right: ;
+}
+
+.top-\[50\%\] {
+  top: 50%;
+}
+
+.right-\[20\%\] {
+  right: 20%;
+}
+
+.right-\[30\%\] {
+  right: 30%;
+}
+
+.top-\[60\%\] {
+  top: 60%;
+}
+
+.top-\[55\%\] {
+  top: 55%;
+}
+
+.right-\[10\%\] {
+  right: 10%;
+}
+
+.top-\[20\%\] {
+  top: 20%;
+}
+
+.top-\[10\%\] {
+  top: 10%;
+}
+
+.top-\[15\%\] {
+  top: 15%;
+}
+
+.top-\[17\%\] {
+  top: 17%;
+}
+
+.right-\[8\%\] {
+  right: 8%;
+}
+
+.right-\[0\%\] {
+  right: 0%;
+}
+
+.right-0 {
+  right: 0px;
+}
+
 .right-\[10vw\] {
   right: 10vw;
+}
+
+.right-\[30vw\] {
+  right: 30vw;
 }
 
 .right-\[50vw\] {
   right: 50vw;
 }
 
-.top-3 {
-  top: 0.75rem;
+.top-\[10vh\] {
+  top: 10vh;
+}
+
+.top-\[50vh\] {
+  top: 50vh;
 }
 
 .top-\[5vh\] {
@@ -622,6 +710,10 @@ button:hover {
 
 .top-\[60vh\] {
   top: 60vh;
+}
+
+.top-\[55vh\] {
+  top: 55vh;
 }
 
 .right-\[60vw\] {
@@ -652,10 +744,6 @@ button:hover {
   margin-bottom: 1.25rem;
 }
 
-.mr-10 {
-  margin-right: 2.5rem;
-}
-
 .flex {
   display: flex;
 }
@@ -668,14 +756,69 @@ button:hover {
   display: none;
 }
 
-.size-\[30vw\] {
-  width: 30vw;
-  height: 30vw;
+.size-\[20vmax\] {
+  width: 20vmax;
+  height: 20vmax;
+}
+
+.size-\[30vmax\] {
+  width: 30vmax;
+  height: 30vmax;
+}
+
+.size-\[25vmax\] {
+  width: 25vmax;
+  height: 25vmax;
+}
+
+.size-\[40vmax\] {
+  width: 40vmax;
+  height: 40vmax;
+}
+
+.size-\[5vmax\] {
+  width: 5vmax;
+  height: 5vmax;
+}
+
+.size-\[35vmax\] {
+  width: 35vmax;
+  height: 35vmax;
+}
+
+.size-\[vmax\] {
+  width: vmax;
+  height: vmax;
+}
+
+.size-\[35vw\] {
+  width: 35vw;
+  height: 35vw;
 }
 
 .size-\[40vw\] {
   width: 40vw;
   height: 40vw;
+}
+
+.size-\[30vw\] {
+  width: 30vw;
+  height: 30vw;
+}
+
+.size-\[10vmax\] {
+  width: 10vmax;
+  height: 10vmax;
+}
+
+.size-\[0vmax\] {
+  width: 0vmax;
+  height: 0vmax;
+}
+
+.size-\[10vw\] {
+  width: 10vw;
+  height: 10vw;
 }
 
 .h-16 {
@@ -694,20 +837,8 @@ button:hover {
   height: 100vh;
 }
 
-.h-\[\] {
-  height: ;
-}
-
 .h-\[80vh\] {
   height: 80vh;
-}
-
-.h-\[90vh\] {
-  height: 90vh;
-}
-
-.h-\[80\] {
-  height: 80;
 }
 
 .w-28 {
@@ -720,10 +851,6 @@ button:hover {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[80\] {
-  width: 80;
 }
 
 .w-\[80vw\] {
@@ -742,16 +869,8 @@ button:hover {
   width: 60vw;
 }
 
-.w-\[\] {
-  width: ;
-}
-
 .w-\[400px\] {
   width: 400px;
-}
-
-.w-\[00px\] {
-  width: 00px;
 }
 
 .w-\[300px\] {
@@ -830,14 +949,14 @@ button:hover {
   padding-bottom: 0px;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .pt-6 {
@@ -936,12 +1055,64 @@ button:hover {
     position: absolute;
   }
 
+  .md\:right-\[35\%\] {
+    right: 35%;
+  }
+
+  .md\:top-\[3\%\] {
+    top: 3%;
+  }
+
+  .md\:right-\[43\%\] {
+    right: 43%;
+  }
+
+  .md\:top-\[39\%\] {
+    top: 39%;
+  }
+
+  .md\:top-\[30\%\] {
+    top: 30%;
+  }
+
+  .md\:right-\[40\%\] {
+    right: 40%;
+  }
+
   .md\:right-\[20\%\] {
     right: 20%;
   }
 
-  .md\:right-\[35\%\] {
-    right: 35%;
+  .md\:top-\[20\%\] {
+    top: 20%;
+  }
+
+  .md\:top-\[40\%\] {
+    top: 40%;
+  }
+
+  .md\:top-\[42\%\] {
+    top: 42%;
+  }
+
+  .md\:top-\[45\%\] {
+    top: 45%;
+  }
+
+  .md\:top-\[20vw\] {
+    top: 20vw;
+  }
+
+  .md\:top-\[45vw\] {
+    top: 45vw;
+  }
+
+  .md\:top-\[20vh\] {
+    top: 20vh;
+  }
+
+  .md\:top-\[45vh\] {
+    top: 45vh;
   }
 
   .md\:top-\[10vh\] {
@@ -952,16 +1123,8 @@ button:hover {
     top: 40vh;
   }
 
-  .md\:right-\[40\%\] {
-    right: 40%;
-  }
-
   .md\:right-\[45\%\] {
     right: 45%;
-  }
-
-  .md\:top-\[45vh\] {
-    top: 45vh;
   }
 
   .md\:top-\[50vh\] {
@@ -970,6 +1133,21 @@ button:hover {
 
   .md\:block {
     display: block;
+  }
+
+  .md\:size-\[40vh\] {
+    width: 40vh;
+    height: 40vh;
+  }
+
+  .md\:size-\[60vh\] {
+    width: 60vh;
+    height: 60vh;
+  }
+
+  .md\:size-\[\] {
+    width: ;
+    height: ;
   }
 
   .md\:size-\[20vw\] {
@@ -988,20 +1166,20 @@ button:hover {
 }
 
 @media (min-width: 1024px) {
-  .lg\:right-\[35\%\] {
-    right: 35%;
+  .lg\:top-\[39\%\] {
+    top: 39%;
   }
 
   .lg\:right-\[43\%\] {
     right: 43%;
   }
 
-  .lg\:top-\[3\%\] {
-    top: 3%;
+  .lg\:right-\[35\%\] {
+    right: 35%;
   }
 
-  .lg\:top-\[39\%\] {
-    top: 39%;
+  .lg\:top-\[3\%\] {
+    top: 3%;
   }
 
   .lg\:size-\[40vh\] {
