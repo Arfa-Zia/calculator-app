@@ -1009,6 +1009,10 @@ button:hover {
 }
 
 @media (min-width: 768px) {
+  .md\:absolute {
+    position: absolute;
+  }
+
   .md\:right-\[35\%\] {
     right: 35%;
   }
