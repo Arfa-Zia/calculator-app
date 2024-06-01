@@ -58,6 +58,7 @@ function Calculate(str){
             }
             else{
                 result =  firstOperand / sencondOperand
+                result.toFixed(5)
             }
             break;
     }
