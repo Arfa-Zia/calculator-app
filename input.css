@@ -3,12 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
     button{
         @apply bg-[#ffffff3a] dark:bg-gray-700 text-white dark:text-shade-2 text-2xl size-12 rounded-xl shadow-inner shadow-white dark:shadow-none font-semibold;
+    }
+    button:hover {
+        @apply scale-110 ease-in-out 
     }
   }

@@ -1,8 +1,12 @@
 
-const themeToggleBtn = document.getElementById('toggle-btn');
 const icon = document.querySelector('i');
 const body = document.querySelector('body');
-const btns = document.querySelectorAll('button');
+
+const input = document.getElementById('input');
+const output = document.getElementById('output');
+
+const Btns = document.querySelectorAll('.btn');
+
 
 
 
@@ -13,11 +17,62 @@ const ToggleIcons = () =>  {
     else if (icon.classList.contains('fa-moon')){
         icon.classList.replace('fa-moon' , 'fa-sun')
     }
+    body.classList.toggle('dark');
 }
 
-themeToggleBtn.addEventListener('click' , () => {
-    body.classList.toggle('dark');
-    ToggleIcons();
-})
+function clearInput() {
+    output.textContent = '';
+    input.value = '';
+}
+
+function delFunc() {
+    let  str = input.value;
+    input.value = str.slice(0 , -1);
+
+}
+
+
+function Calculate(str){
+   let operators = str.match(/[\*\-\+\/]/g)
+   let operands = str.split(/[\*\-\+\/]/g).map(Number)
+   let result;
+
+   for(let i=0; i < operators.length ; i++){
+    let operator = operators[i];
+    let firstOperand = operands[i];
+    let sencondOperand = operands[i+1];
+
+    switch(operator){
+        case "+":
+            result =  firstOperand + sencondOperand;
+            break;
+        case "-":
+            result =  firstOperand - sencondOperand;
+            break;
+        case "*":
+            result =  firstOperand * sencondOperand;
+            break;
+        case "/":
+            if(firstOperand / sencondOperand == "Infinity"){
+                alert('Division with 0 is not possible')
+            }
+            else{
+                result =  firstOperand / sencondOperand
+            }
+            break;
+    }
+   }
+
+    output.textContent = result
+    input.value = '';
+}
+
+
+
+Btns.forEach( btn => btn.addEventListener( 'click' , () => {
+    input.value += btn.textContent
+}))
+
+
 
 
