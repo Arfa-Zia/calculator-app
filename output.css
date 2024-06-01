@@ -837,6 +837,10 @@ button:hover {
   height: 100vh;
 }
 
+.h-\[80vh\] {
+  height: 80vh;
+}
+
 .w-28 {
   width: 7rem;
 }
