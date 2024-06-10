@@ -758,6 +758,10 @@ button:hover {
   background-repeat: no-repeat;
 }
 
+.p-5 {
+  padding: 1.25rem;
+}
+
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;

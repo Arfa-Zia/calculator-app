@@ -37,22 +37,53 @@ function delFunc() {
 }
 
 Btns.forEach( btn => btn.addEventListener( 'click' , () => {
-    input.value += " " + btn.textContent
+    input.value += btn.textContent
 }))
 
 operatorBtns.forEach( btn => btn.addEventListener('click' , () => {
-    input.value += ` ${btn.textContent}`
+
+    if(!Number(input.value.charAt(0)) && previousResult != null){
+        
+            input.value = previousResult;
+    
+            if(btn.textContent == '('){
+                input.value += `${btn.textContent} `
+            }
+            else if(btn.textContent == ')'){
+                input.value += ` ${btn.textContent}`
+            }
+            else{
+                input.value += ` ${btn.textContent} `
+            }
+        }
+        else{
+            if(btn.textContent == '('){
+                input.value += `${btn.textContent} `
+            }
+            else if(btn.textContent == ')'){
+                input.value += ` ${btn.textContent}`
+            }
+            else{
+                input.value += ` ${btn.textContent} `
+            }
+        }
+
+
+   
 }))
 
+ 
 equalBtn.addEventListener('click' , () => {
+   
     Operate(input.value)
     output.textContent = currentResult;
     previousResult = currentResult;
-    input.value = ''
+    input.value = '';
+    
 })
 
 function Operate(input){
-    let Input = input.split(' ').splice(1)
+    let Input = input.split(' ')
     if(Input.includes('(') && Input.includes(')')){
         let openBracketIndex = Input.lastIndexOf('(');
         let closeBracketIndex = Input.indexOf(')' , openBracketIndex);
@@ -117,11 +148,7 @@ function evaluateExpression(input){
     let result = 0;
     
     for(let i = 0 ; i < operators.length ; i++){
-    if(previousResult != null){
-        result = Calculate(operators[i] , previousResult , parseFloat(numbers[i+1]))
-        return result
-    }
-    else if(result == 0){
+   if(result == 0){
         result = Calculate(operators[i] , parseFloat(numbers[i]) , parseFloat(numbers[i+1]))
         return result
     }
