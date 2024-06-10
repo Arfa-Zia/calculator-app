@@ -151,15 +151,16 @@ function evaluateExpression(input){
     let numbers = input.map(Number).filter(char => !isNaN(char));
     let operators = input.filter(char => isNaN(char));    
     let result = 0;
-    
+    console.log(numbers);
+    console.log(operators)
+ 
     for(let i = 0 ; i < operators.length ; i++){
-   if(result == 0){
-        result = Calculate(operators[i] , parseFloat(numbers[i]) , parseFloat(numbers[i+1]))
-        return result
+         if(result == 0){
+            result = Calculate(operators[i] , parseFloat(numbers[i]) , parseFloat(numbers[i+1]))
+        }
+        else{
+            result = Calculate(operators[i] , result , parseFloat(numbers[i+1]))
+            }
     }
-    else{
-        result = Calculate(operators[i] , result , parseFloat(numbers[i+1]))
-        return result
-    }
-    }
+    return result;
  }
