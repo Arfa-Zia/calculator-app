@@ -79,7 +79,7 @@ equalBtn.addEventListener('click' , () => {
     output.textContent = currentResult;
     previousResult = currentResult;
     input.value = '';
-    
+
 })
 
 function Operate(input){
@@ -94,15 +94,20 @@ function Operate(input){
         
         let innerExpression = Input.slice(openBracketIndex + 1 , closeBracketIndex)
         let innerResult = evaluateExpression(innerExpression);
+
         let newExpression = []
         if(openBracketIndex != 0 ){
-            newExpression.push(Input.slice(0 , openBracketIndex )) 
+            for(let i = 0 ; i < Input.slice(0 , openBracketIndex).length; i++){
+                newExpression.push(Input.slice(0 , openBracketIndex)[i])
+            }
         }
          newExpression.push(innerResult)
         for(let i = 0 ; i < Input.slice(closeBracketIndex + 1).length; i++){
             newExpression.push(Input.slice(closeBracketIndex + 1)[i])
         }
+        
         currentResult = evaluateExpression(newExpression)
+        
     }
     else {
         currentResult = evaluateExpression(Input)
