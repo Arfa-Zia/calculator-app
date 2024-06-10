@@ -162,5 +162,5 @@ function evaluateExpression(input){
             result = Calculate(operators[i] , result , parseFloat(numbers[i+1]))
             }
     }
-    return result;
+    return result
  }
