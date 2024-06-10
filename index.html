@@ -11,39 +11,44 @@
 </head>
 <body class="font-poppins">
     
-  <main class="w-screen h-screen backdrop-blur-[10px] bg-shade-1 dark:bg-shade-2 flex items-center justify-center">
+  <main class="w-screen h-screen backdrop-blur-[10px] bg-shade-1 dark:bg-shade-2 flex items-center justify-center text-xs md:text-xl">
       <button  onclick="ToggleIcons()" class="absolute top-3 left-3" ><i class="fa fa-moon"></i></button>
       
       <div class="rounded-[50%]  bg-shade-2 dark:bg-shade-3 z-10 hidden md:block absolute size-[40vw] md:size-[30vw] lg:size-[60vh] right-[50vw] top-[60vh]  md:top-[50vh] md:right-[45%] lg:top-[39%] lg:right-[43%]   "></div>
 
       <div class="rounded-[50%]  bg-shade-2 dark:bg-shade-3 z-10 size-[30vw] md:size-[20vw] lg:size-[40vh] hidden md:block absolute right-[10vw] top-[5vh] md:top-[10vh] md:right-[20%] lg:right-[35%] lg:top-[3%]  "></div>
 
-    <div class="flex flex-col px-3 relative rounded-3xl z-30 bg-[rgba(250,248,248,0.43)] dark:bg-[#000000d0] backdrop-blur-lg justify-center items-center m-5  w-[300px] md:w-auto">
+    <div class="flex flex-col md:px-3 relative rounded-3xl z-30 bg-[rgba(250,248,248,0.43)] dark:bg-[#000000d0] backdrop-blur-lg justify-center items-center ">
         <div >
-            <input id="input" class="w-full h-20 bg-inherit focus:outline-none px-5 py-0 pt-6 text-right text-lg text-gray-600 dark:text-gray-300" type="text">
+            <input id="input" readonly class="w-full h-20 bg-inherit focus:outline-none px-5 py-0 pt-6 text-right text-lg text-gray-600 dark:text-gray-300" type="text">
             <div id="output" class="w-full h-16 px-5 text-right text-3xl mb-5 dark:text-white">
               
             </div>
         </div>
-        <div class="grid grid-cols-4 h-full gap-5">
-          <button onclick="clearInput()" class="text-shade-2 dark:bg-gray-500 dark:text-[#A5A5A5] font-normal">Ac</button>
+        <div class="grid grid-cols-4  gap-3 md:gap-5">
+       
+          <button onclick="clearInput()" class="text-shade-2 dark:bg-gray-500 dark:text-[#A5A5A5] font-normal">C</button>
           <button onclick="delFunc()" class="bg-[url('imgs/Vector.png')] dark:bg-gray-500  dark:bg-[url('imgs/Vector1.png')] bg-center bg-no-repeat"></button>
-          <button class="btn bg-[#a0d7ff93] dark:bg-shade-3 text-shade-2 ">/</button>
-          <button class="btn bg-[#a0d7ff93] dark:bg-shade-3 text-shade-2 ">*</button>
+          <button class="operator-btn bg-[#a0d7ff93] dark:bg-shade-3 text-shade-2 ">÷</button>
+          <button class="operator-btn bg-[#a0d7ff93] dark:bg-shade-3 text-shade-2 row-span-2 h-28 ">*</button>
+          <button class="operator-btn">(</button>
+          <button class="operator-btn">)</button>
+          <button class="btn">%</button>
           <button class="btn">7</button>
           <button class="btn">8</button>
           <button class="btn">9</button>
-          <button class="btn bg-[#a0d7ff93] dark:bg-shade-3 text-shade-2 ">-</button>
+          <button class="operator-btn bg-[#a0d7ff93] dark:bg-shade-3 text-shade-2 ">-</button>
           <button class="btn">4</button>
           <button class="btn">5</button>
           <button class="btn">6</button>
-          <button class="row-span-2 h-20 relative btn bg-[#a0d7ff93] dark:bg-shade-3 text-shade-2 ">+</button>
+          <button class="operator-btn row-span-2 h-20 relative bg-[#a0d7ff93] dark:bg-shade-3 text-shade-2 ">+</button>
           <button class="btn">1</button>
           <button class="btn">2</button>
           <button class="btn">3</button>
           <button class="btn col-span-2 w-28">0</button>
           <button class="btn">.</button>
-          <button onclick="Calculate(input.value)" class="h-20 relative bottom-8 bg-shade-2 dark:bg-shade-2 dark:text-white">=</button>
+          <button id="equal-btn" class="h-20 relative bottom-8 bg-shade-2 dark:bg-shade-2 dark:text-white">=</button>
+
         </div>
     </div>
   </main>

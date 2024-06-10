@@ -6,7 +6,11 @@ const input = document.getElementById('input');
 const output = document.getElementById('output');
 
 const Btns = document.querySelectorAll('.btn');
+const operatorBtns = document.querySelectorAll('.operator-btn')
+const equalBtn = document.querySelector('#equal-btn')
 
+let previousResult = null ;
+let currentResult;
 
 
 
@@ -23,6 +27,7 @@ const ToggleIcons = () =>  {
 function clearInput() {
     output.textContent = '';
     input.value = '';
+    previousResult = null
 }
 
 function delFunc() {
@@ -31,48 +36,98 @@ function delFunc() {
 
 }
 
+Btns.forEach( btn => btn.addEventListener( 'click' , () => {
+    input.value += " " + btn.textContent
+}))
 
-function Calculate(str){
-   let operators = str.match(/[\*\-\+\/]/g)
-   let operands = str.split(/[\*\-\+\/]/g).map(Number)
-   let result;
+operatorBtns.forEach( btn => btn.addEventListener('click' , () => {
+    input.value += ` ${btn.textContent}`
+}))
 
-   for(let i=0; i < operators.length ; i++){
-    let operator = operators[i];
-    let firstOperand = operands[i];
-    let sencondOperand = operands[i+1];
+equalBtn.addEventListener('click' , () => {
+    Operate(input.value)
+    output.textContent = currentResult;
+    previousResult = currentResult;
+    input.value = ''
+})
 
-    switch(operator){
-        case "+":
-            result =  firstOperand + sencondOperand;
-            break;
-        case "-":
-            result =  firstOperand - sencondOperand;
-            break;
-        case "*":
-            result =  firstOperand * sencondOperand;
-            break;
-        case "/":
-            if(firstOperand / sencondOperand == "Infinity"){
-                alert('Division with 0 is not possible')
-            }
-            else{
-                result =  (firstOperand / sencondOperand).toFixed(5)
-            }
-            break;
+function Operate(input){
+    let Input = input.split(' ').splice(1)
+    if(Input.includes('(') && Input.includes(')')){
+        let openBracketIndex = Input.lastIndexOf('(');
+        let closeBracketIndex = Input.indexOf(')' , openBracketIndex);
+    
+        if(openBracketIndex === -1 || closeBracketIndex === -1){
+            evaluateExpression(Input)
+        }
+        
+        let innerExpression = Input.slice(openBracketIndex + 1 , closeBracketIndex)
+        let innerResult = evaluateExpression(innerExpression);
+        let newExpression = []
+        if(openBracketIndex != 0 ){
+            newExpression.push(Input.slice(0 , openBracketIndex )) 
+        }
+         newExpression.push(innerResult)
+        for(let i = 0 ; i < Input.slice(closeBracketIndex + 1).length; i++){
+            newExpression.push(Input.slice(closeBracketIndex + 1)[i])
+        }
+        currentResult = evaluateExpression(newExpression)
     }
-   }
-
-    output.textContent = result
-    input.value = '';
+    else {
+        currentResult = evaluateExpression(Input)
+    }
 }
 
 
+function Calculate( operator , firstNum , secondNum){
+    switch(operator){
+        case '+':
+            return firstNum + secondNum;
+        break;
+    case '-':
+        return firstNum - secondNum;
+        break;
+    case '*':
+        return firstNum * secondNum; 
+        break;
+    case '/':
+        if( secondNum == 0){
+            alert('Division with zero is not possible')
+        }
+        else if(Number.isInteger(firstNum/secondNum)){
+            return firstNum / secondNum
+        }
+        else{
+            return (firstNum / secondNum).toFixed(1)
+        }
+        break;
+    case '%':
+        return firstNum % secondNum;  
+        break;
+    default:
+        alert('Invalid Operation');
+        break;
+  }
+}
 
-Btns.forEach( btn => btn.addEventListener( 'click' , () => {
-    input.value += btn.textContent
-}))
 
-
-
-
+function evaluateExpression(input){
+    let numbers = input.map(Number).filter(char => !isNaN(char));
+    let operators = input.filter(char => isNaN(char));    
+    let result = 0;
+    
+    for(let i = 0 ; i < operators.length ; i++){
+    if(previousResult != null){
+        result = Calculate(operators[i] , previousResult , parseFloat(numbers[i+1]))
+        return result
+    }
+    else if(result == 0){
+        result = Calculate(operators[i] , parseFloat(numbers[i]) , parseFloat(numbers[i+1]))
+        return result
+    }
+    else{
+        result = Calculate(operators[i] , result , parseFloat(numbers[i+1]))
+        return result
+    }
+    }
+ }

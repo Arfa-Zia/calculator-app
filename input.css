@@ -4,7 +4,7 @@
 
 @layer base {
     button{
-        @apply bg-[#ffffff3a] dark:bg-gray-700 text-white dark:text-shade-2 text-2xl size-12 rounded-xl shadow-inner shadow-white dark:shadow-none font-semibold;
+        @apply bg-[#ffffff3a] dark:bg-gray-700 text-white dark:text-shade-2  size-12 rounded-xl shadow-inner shadow-white dark:shadow-none font-semibold;
     }
     button:hover {
         @apply scale-110 ease-in-out 
