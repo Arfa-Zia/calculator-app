@@ -117,7 +117,7 @@ function Operate(input){
 
 function Calculate( operator , firstNum , secondNum){
     switch(operator){
-        case '+':
+    case '+':
             return firstNum + secondNum;
         break;
     case '-':
@@ -126,7 +126,7 @@ function Calculate( operator , firstNum , secondNum){
     case '*':
         return firstNum * secondNum; 
         break;
-    case '/':
+    case '÷':
         if( secondNum == 0){
             alert('Division with zero is not possible')
         }
