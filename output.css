@@ -692,6 +692,10 @@ button:hover {
   width: 100vw;
 }
 
+.w-\[300px\] {
+  width: 300px;
+}
+
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -760,6 +764,10 @@ button:hover {
 
 .p-5 {
   padding: 1.25rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
 }
 
 .px-5 {
