@@ -138,7 +138,7 @@ function Calculate( operator , firstNum , secondNum){
         }
         break;
     case '%':
-        return firstNum % secondNum;  
+        return firstNum * 0.01;  
         break;
     default:
         alert('Invalid Operation');
