@@ -118,33 +118,35 @@ function Operate(input){
 function Calculate( operator , firstNum , secondNum){
     switch(operator){
     case '+':
-            return firstNum + secondNum;
-        break;
+    return firstNum + secondNum;
     case '-':
-        return firstNum - secondNum;
-        break;
+    return firstNum - secondNum;
     case '*':
-        return firstNum * secondNum; 
-        break;
+    return firstNum * secondNum;
     case '÷':
-        if( secondNum == 0){
-            alert('Division with zero is not possible')
-        }
-        else if(Number.isInteger(firstNum/secondNum)){
-            return firstNum / secondNum
-        }
-        else{
-            return (firstNum / secondNum).toFixed(1)
-        }
-        break;
+    if( secondNum == 0){
+    alert('Division with zero is not possible')
+    }
+    else if(Number.isInteger(firstNum/secondNum)){
+    return firstNum / secondNum
+    }
+    else{
+    return (firstNum / secondNum).toFixed(1)
+    }
+    break;
     case '%':
-        return firstNum * 0.01;  
-        break;
+    console.log("second number " , secondNum);
+    console.log("firstNum number " , firstNum);
+    if(secondNum == 0) {
+    return firstNum / 100
+    }else {
+    return (firstNum * secondNum) / 100;
+    }
     default:
-        alert('Invalid Operation');
-        break;
-  }
-}
+    alert('Invalid Operation');
+    break;
+    }
+   } 
 
 
 function evaluateExpression(input){
