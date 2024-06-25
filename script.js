@@ -119,13 +119,10 @@ function Calculate( operator , firstNum , secondNum){
     switch(operator){
     case '+':
             return firstNum + secondNum;
-        break;
     case '-':
         return firstNum - secondNum;
-        break;
     case '*':
         return firstNum * secondNum; 
-        break;
     case '÷':
         if( secondNum == 0){
             alert('Division with zero is not possible')
@@ -138,8 +135,13 @@ function Calculate( operator , firstNum , secondNum){
         }
         break;
     case '%':
-        return firstNum * 0.01;  
-        break;
+        console.log("second number " , secondNum);
+        console.log("firstNum number " , firstNum);
+        if(secondNum == 0) {
+            return firstNum / 100
+        }else {
+            return (firstNum * secondNum) / 100;  
+        }
     default:
         alert('Invalid Operation');
         break;
