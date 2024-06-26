@@ -36,8 +36,10 @@ function delFunc() {
 
 }
 
+
 Btns.forEach( btn => btn.addEventListener( 'click' , () => {
     input.value += btn.textContent
+     updateResult();
 }))
 
 operatorBtns.forEach( btn => btn.addEventListener('click' , () => {
@@ -66,103 +68,104 @@ operatorBtns.forEach( btn => btn.addEventListener('click' , () => {
             else{
                 input.value += ` ${btn.textContent} `
             }
-        }
-
-
-   
+        }   
 }))
 
- 
-equalBtn.addEventListener('click' , () => {
-   
-    Operate(input.value)
-    output.textContent = currentResult;
-    previousResult = currentResult;
-    input.value = '';
-
-})
-
-function Operate(input){
-    let Input = input.split(' ')
-    if(Input.includes('(') && Input.includes(')')){
-        let openBracketIndex = Input.lastIndexOf('(');
-        let closeBracketIndex = Input.indexOf(')' , openBracketIndex);
-    
-        if(openBracketIndex === -1 || closeBracketIndex === -1){
-            evaluateExpression(Input)
-        }
-        
-        let innerExpression = Input.slice(openBracketIndex + 1 , closeBracketIndex)
-        let innerResult = evaluateExpression(innerExpression);
-
-        let newExpression = []
-        if(openBracketIndex != 0 ){
-            for(let i = 0 ; i < Input.slice(0 , openBracketIndex).length; i++){
-                newExpression.push(Input.slice(0 , openBracketIndex)[i])
-            }
-        }
-         newExpression.push(innerResult)
-        for(let i = 0 ; i < Input.slice(closeBracketIndex + 1).length; i++){
-            newExpression.push(Input.slice(closeBracketIndex + 1)[i])
-        }
-        
-        currentResult = evaluateExpression(newExpression)
-        
+ function updateResult() {
+    let inputValue = input.value;
+    const operaterClicked = Array.from(operatorBtns).some(btn => inputValue.includes(btn.textContent.trim()));
+    if (inputValue && operaterClicked) {
+        Operate(inputValue);
+        output.textContent = currentResult;
+    } else {
+        output.textContent = '';
     }
-    else {
-        currentResult = evaluateExpression(Input)
+}
+input.addEventListener('input', updateResult);
+equalBtn.addEventListener('click' , () => { updateResult(); previousResult = currentResult; input.value = '';})
+
+function Operate(input) {
+    let expression = input.split(' ');
+    while (expression.includes('(') && expression.includes(')')) {
+        let openIndex = expression.lastIndexOf('(');
+        let closeIndex = expression.indexOf(')', openIndex);
+
+        if (openIndex === -1 || closeIndex === -1) {
+            break; 
+        }
+
+        let subExpression = expression.slice(openIndex + 1, closeIndex);
+        let subResult = evaluateExpression(subExpression);
+
+        expression.splice(openIndex, closeIndex - openIndex + 1, subResult.toString());
     }
+    currentResult = evaluateExpression(expression);
 }
 
 
-function Calculate( operator , firstNum , secondNum){
+function evaluateExpression(input) {
+  let numbers = input.map(Number).filter(num => !isNaN(num));
+  let operators = input.filter(op => isNaN(op));
+
+     // Handle percentage calculations first
+    for (let i = 0; i < operators.length; i++) {
+        if (operators[i] === '%') {
+            let percentage = numbers[i];
+            let baseNumber = numbers[i - 1];
+            let secondNumber = numbers[i + 1];            
+            if (isNaN(baseNumber)) {
+            if(secondNumber == 0) {
+            return percentage / 100
+        }else {
+            return percentage * (secondNumber / 100);  
+        }
+    }
+
+            let result = baseNumber * (percentage / 100);
+            numbers.splice(i - 1, 2, baseNumber + result);
+            operators.splice(i, 1);
+            i--; 
+        }
+    }
+
+  for (let i = 0; i < operators.length; i++) {
+    if (operators[i] === '*' || operators[i] === '÷') {
+      let result = Calculate(operators[i], numbers[i], numbers[i + 1]);
+      numbers.splice(i, 2, result);
+      operators.splice(i, 1);
+      i--;
+    }
+  }
+
+    // Handle remaining addition and subtraction
+    let result = numbers[0];
+    for (let i = 0; i < operators.length; i++) {
+        result = Calculate(operators[i], result, numbers[i + 1]);
+    }
+    return result;
+}
+
+function Calculate( operator , a , b){
     switch(operator){
     case '+':
-            return firstNum + secondNum;
+            return a + b;
     case '-':
-        return firstNum - secondNum;
+        return a - b;
     case '*':
-        return firstNum * secondNum; 
+        return a * b; 
     case '÷':
-        if( secondNum == 0){
+        if( b == 0){
             alert('Division with zero is not possible')
         }
-        else if(Number.isInteger(firstNum/secondNum)){
-            return firstNum / secondNum
+        else if(Number.isInteger(a/b)){
+            return a / b
         }
         else{
-            return (firstNum / secondNum).toFixed(1)
+            return (a / b).toFixed(1)
         }
         break;
-    case '%':
-        console.log("second number " , secondNum);
-        console.log("firstNum number " , firstNum);
-        if(secondNum == 0) {
-            return firstNum / 100
-        }else {
-            return (firstNum * secondNum) / 100;  
-        }
     default:
         alert('Invalid Operation');
         break;
   }
 }
-
-
-function evaluateExpression(input){
-    let numbers = input.map(Number).filter(char => !isNaN(char));
-    let operators = input.filter(char => isNaN(char));    
-    let result = 0;
-    console.log(numbers);
-    console.log(operators)
- 
-    for(let i = 0 ; i < operators.length ; i++){
-         if(result == 0){
-            result = Calculate(operators[i] , parseFloat(numbers[i]) , parseFloat(numbers[i+1]))
-        }
-        else{
-            result = Calculate(operators[i] , result , parseFloat(numbers[i+1]))
-            }
-    }
-    return result
- }
