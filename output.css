@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -638,6 +638,11 @@ button:hover {
   grid-row: span 2 / span 2;
 }
 
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -676,6 +681,9 @@ button:hover {
   height: 7rem;
 }
 
+.h-\[532px\] {
+  height: 532px;
+}
 .h-screen {
   height: 100vh;
 }
@@ -728,6 +736,10 @@ button:hover {
   gap: 0.75rem;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
 .overflow-auto {
   overflow: auto;
 }
@@ -750,14 +762,6 @@ button:hover {
 
 .overscroll-none {
   overscroll-behavior: none;
-}
-
-.overscroll-x-auto {
-  overscroll-behavior-x: auto;
-}
-
-.overscroll-x-contain {
-  overscroll-behavior-x: contain;
 }
 
 .rounded-3xl {
