@@ -78,6 +78,12 @@ equalBtn.addEventListener('click', () =>{
 })
 
 function Operate(input) {
+   let openCount = (input.match(/\(/g)||[]).length;
+   let closeCount = (input.match(/\)/g)||[]).length;
+   while(openCount > closeCount){
+      input += ' ) ';
+      closeCount++
+   }
     let expression = input.split(' ');
     while (expression.includes('(') && expression.includes(')')) {
         let openIndex = expression.lastIndexOf('(');
